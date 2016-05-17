@@ -124,4 +124,13 @@ body {
 .clickable {
   cursor: pointer;
 }
+/**
+ * Marking favorites
+ */
+.rating {
+  padding-left: .5em;
+}
+.rating span {
+  padding: 0 .2em;
+}
 /*# sourceMappingURL=main.css.map */
