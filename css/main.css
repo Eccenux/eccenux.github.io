@@ -118,4 +118,10 @@ body {
 .bx-agenda .h-210 {
   height: 1120px;
 }
+/**
+	various minor globals
+*/
+.clickable {
+  cursor: pointer;
+}
 /*# sourceMappingURL=main.css.map */
