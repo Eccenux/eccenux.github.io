@@ -11,19 +11,32 @@ function openDetailsUrl(url) {
 }
 
 (function (){
+	function addClick(item, title) {
+		if (title) {
+			title.classList.add('clickable');
+			title.setAttribute('data-href', item.getAttribute('data-href'));
+			title.addEventListener('click', function () {
+				openDetailsUrl(this.getAttribute('data-href'));
+			});
+		}
+	}
 	function prepare() {
+		// talks
 		var items = document.querySelectorAll('.item.fancybox-ajax');
 		for (var i = 0; i < items.length; i++) {
 			var item = items[i];
 			if (item.getAttribute('data-href')) {
 				var title = item.querySelector('.i-title');
-				if (title) {
-					title.classList.add('clickable');
-					title.setAttribute('data-href', item.getAttribute('data-href'));
-					title.addEventListener('click', function () {
-						openDetailsUrl(this.getAttribute('data-href'));
-					});
-				}
+				addClick(item, title);
+			}
+		}
+		// other events
+		var items = document.querySelectorAll('.i-type-sponsor');
+		for (var i = 0; i < items.length; i++) {
+			var item = items[i];
+			if (item.getAttribute('data-href')) {
+				var title = item.querySelector('strong');
+				addClick(item, title);
 			}
 		}
 	}
