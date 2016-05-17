@@ -1,0 +1,122 @@
+/* 
+    Created on : 2016-05-17, 21:22:56
+    Author     : Maciej Nux Jaros
+*/
+body {
+  font: 12pt sans-serif;
+}
+/**
+	Main structure
+*/
+.agenda-container {
+  clear: both;
+}
+.agenda-container .container {
+  clear: both;
+}
+.agenda-container .container > h3 {
+  text-align: center;
+  margin: 2em 1em 1em;
+  font-size: 150%;
+}
+.agenda-container .container .agenda-stage-name {
+  text-align: center;
+  color: white;
+}
+.agenda-container .container .agenda-stage-name h3 {
+  font-weight: normal;
+}
+.agenda-container .container .bx-agenda-col {
+  background-color: #000024;
+  max-width: 33%;
+  float: left;
+  border: 1px solid #c5c5da;
+  border-style: none;
+  border-left-style: solid;
+}
+.agenda-container .container .bx-agenda-col:last-child {
+  border-right-style: solid;
+}
+/**
+	Agenda boxes
+*/
+.bx-agenda .i-type-sponsor {
+  border-top: 5px solid #000024;
+}
+.fancybox-ajax,
+.bx-agenda .i-type-sponsor {
+  background-color: #f0f0ff;
+  display: block;
+  padding: 1em;
+  box-sizing: border-box;
+}
+.fancybox-ajax {
+  border-top: 1px solid #c5c5da;
+  background-color: white;
+}
+.fancybox-ajax .i-time {
+  display: block;
+}
+.fancybox-ajax .i-time:before {
+  content: '🕐';
+  display: inline-block;
+  padding-right: .5em;
+}
+.fancybox-ajax .i-title {
+  display: block;
+  font-weight: bold;
+}
+.fancybox-ajax .i-speakers img {
+  float: left;
+  padding-right: .5em;
+}
+.fancybox-ajax .i-speakers span {
+  line-height: 40px;
+  vertical-align: middle;
+}
+.bx-agenda .h-15 {
+  height: 80px;
+}
+.bx-agenda .h-20 {
+  height: 106.666667px;
+}
+.bx-agenda .h-30 {
+  height: 160px;
+}
+.bx-agenda .h-45 {
+  height: 240px;
+}
+.bx-agenda .h-60 {
+  height: 320px;
+}
+.bx-agenda .h-75 {
+  height: 400px;
+}
+.bx-agenda .h-90 {
+  height: 480px;
+}
+.bx-agenda .h-105 {
+  height: 560px;
+}
+.bx-agenda .h-120 {
+  height: 640px;
+}
+.bx-agenda .h-135 {
+  height: 720px;
+}
+.bx-agenda .h-150 {
+  height: 800px;
+}
+.bx-agenda .h-165 {
+  height: 880px;
+}
+.bx-agenda .h-180 {
+  height: 960px;
+}
+.bx-agenda .h-195 {
+  height: 1040px;
+}
+.bx-agenda .h-210 {
+  height: 1120px;
+}
+/*# sourceMappingURL=main.css.map */
