@@ -8,12 +8,6 @@ body {
 /**
 	Main structure
 */
-.agenda-container {
-  clear: both;
-}
-.agenda-container .container {
-  clear: both;
-}
 .agenda-container .container > h3 {
   text-align: center;
   margin: 2em 1em 1em;
@@ -36,6 +30,11 @@ body {
 }
 .agenda-container .container .bx-agenda-col:last-child {
   border-right-style: solid;
+}
+.agenda-container .container:after {
+  clear: both;
+  display: block;
+  content: ' ';
 }
 /**
 	Agenda boxes

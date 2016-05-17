@@ -13,7 +13,6 @@ body {
 	Main structure
 */
 .agenda-container {
-			clear : both;
 	.container {
 		& > h3 {
 			text-align: center;
@@ -43,7 +42,11 @@ body {
 				border-right-style: solid;
 			}
 		}
-		clear : both;
+		&:after {
+			clear: both;
+			display: block;
+			content: ' ';
+		}
 	}
 }
 
