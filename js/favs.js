@@ -84,5 +84,8 @@
 	initRatings(function() {
 		prepare();
 	});
+	// export / import
+	var exportImport = new ExportTools(ratingsKey);
+	exportImport.init();
 })();
 
