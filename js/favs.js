@@ -13,9 +13,6 @@
 	};
 
 	function saveRating(id, rating) {
-		if (rating === null) {
-			rating = 0;
-		}
 		ratings.ids[id] = rating;
 		console.log(id, rating);
 	}
@@ -39,6 +36,10 @@
 		container.addEventListener("click", function(e) {
 			var star = e.target;
 			var rating = star.getAttribute('data-r');
+			// target was not a star - reset
+			if (rating === null) {
+				rating = 0;
+			}
 			saveRating(id, rating);
 			stars.innerHTML = prepareRatingHtml(rating);
 		});
