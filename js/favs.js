@@ -16,6 +16,33 @@
 		ratings.ids[id] = rating;
 		console.log(id, rating);
 	}
+	function readRating(id) {
+		return (id in ratings.ids) ? ratings.ids[id] : 0;
+	}
+
+	function prepareRatingHtml(rating) {
+		var html = '';
+		for (var r = 1; r <= ratingMax; r++) {
+			var marker = (r <= rating) ? markers.whole : markers.empty;
+			html += '<span data-r="'+r+'" class="clickable">'+marker+'</span>';
+		}
+		return html;
+	}
+
+	function prepareStars(container, stars, id) {
+		stars.className = 'rating';
+		var rating = readRating(id);
+		stars.innerHTML = prepareRatingHtml(rating);
+		stars.addEventListener("click", function(e) {
+			if(e.target && e.target.nodeName == "SPAN") {
+				var star = e.target;
+				var rating = star.getAttribute('data-r');
+				saveRating(id, rating);
+				this.innerHTML = prepareRatingHtml(rating);
+			}
+		});
+		container.appendChild(stars);
+	}
 
 	function prepare() {
 		// talks
@@ -27,21 +54,7 @@
 				var container = item.querySelector('.i-time');
 				if (container) {
 					var stars = document.createElement('span');
-					stars.setAttribute('data-id', id);
-					stars.className = 'rating';
-					var html = '';
-					for (var r = 1; r <= ratingMax; r++) {
-						html += '<span data-r="'+r+'" class="clickable">'+markers.empty+'</span>';
-					}
-					stars.innerHTML = html;
-					stars.addEventListener("click", function(e) {
-						if(e.target && e.target.nodeName == "SPAN") {
-							var star = e.target;
-							var id = this.getAttribute('data-id');
-							saveRating(id, star.getAttribute('data-r'));
-						}
-					});
-					container.appendChild(stars);
+					prepareStars(container, stars, id);
 				}
 			}
 		}
