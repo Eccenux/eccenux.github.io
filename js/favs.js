@@ -49,6 +49,7 @@
 
 	function prepareStars(container, stars, id) {
 		stars.className = 'rating';
+		stars.setAttribute('data-id', id);
 		var rating = readRating(id);
 		stars.innerHTML = prepareRatingHtml(rating);
 		container.addEventListener("click", function(e) {
@@ -85,7 +86,16 @@
 		prepare();
 	});
 	// export / import
-	var exportImport = new ExportTools(ratingsKey);
+	var exportImport = new ExportTools(ratingsKey, function(importedRatings){
+		ratings = importedRatings;
+		var items = document.querySelectorAll('.item.fancybox-ajax .rating');
+		for (var i = 0; i < items.length; i++) {
+			var stars = items[i];
+			var id = stars.getAttribute('data-id');
+			var rating = readRating(id);
+			stars.innerHTML = prepareRatingHtml(rating);
+		}
+	});
 	exportImport.init();
 })();
 

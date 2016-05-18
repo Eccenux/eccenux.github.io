@@ -2,10 +2,13 @@
  * Export / import tools
  *
  * @param {String} storageKey localforage key name.
+ * @param {Function} onAfterImport [optional] function to run after data is imported to storage.
+ *		This function can read data from the first argument.
  */
-function ExportTools(storageKey) {
+function ExportTools(storageKey, onAfterImport) {
 	this.toolsContainer = null;
 	this.storageKey = storageKey;
+	this.onAfterImport = typeof onAfterImport === 'function' ? onAfterImport : function(){};
 }
 
 /**
@@ -59,10 +62,13 @@ ExportTools.prototype.importData = function(onSuccess) {
 	if (!confirm('Are you sure you want to overwrite your current data?')) {
 		return;
 	}
+	var _self = this;
 	var json = this.helperInput.value;
-	localforage.setItem(this.storageKey, JSON.parse(json)).then(function() {
+	var value = JSON.parse(json);
+	localforage.setItem(this.storageKey, value).then(function() {
 		console.log('Data import finished');
 		onSuccess();
+		_self.onAfterImport(value);
 	}).catch(function(err) {
 		console.error('Problem saving data to storage!', err);
 	});
