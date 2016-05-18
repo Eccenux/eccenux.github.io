@@ -13,6 +13,9 @@
 	};
 
 	function saveRating(id, rating) {
+		if (rating === null) {
+			rating = 0;
+		}
 		ratings.ids[id] = rating;
 		console.log(id, rating);
 	}
@@ -33,13 +36,11 @@
 		stars.className = 'rating';
 		var rating = readRating(id);
 		stars.innerHTML = prepareRatingHtml(rating);
-		stars.addEventListener("click", function(e) {
-			if(e.target && e.target.nodeName == "SPAN") {
-				var star = e.target;
-				var rating = star.getAttribute('data-r');
-				saveRating(id, rating);
-				this.innerHTML = prepareRatingHtml(rating);
-			}
+		container.addEventListener("click", function(e) {
+			var star = e.target;
+			var rating = star.getAttribute('data-r');
+			saveRating(id, rating);
+			stars.innerHTML = prepareRatingHtml(rating);
 		});
 		container.appendChild(stars);
 	}
