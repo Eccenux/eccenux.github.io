@@ -7,23 +7,37 @@ function ExportTools(storageKey) {
 	this.toolsContainer = null;
 	this.storageKey = storageKey;
 }
+
+/**
+ * @private
+ */
 ExportTools.prototype.prepareToolsContainer = function() {
 	this.toolsContainer = document.createElement('div');
 	this.toolsContainer.className = 'tools-container';
 	var body = document.querySelector('body');
 	body.insertBefore(this.toolsContainer, body.firstChild);
 };
+
+/**
+ * @private
+ */
 ExportTools.prototype.show = function() {
 	this.helperInput.style.display = '';
 	this.closeButton.style.display = '';
 	this.saveButton.style.display = '';
 };
+/**
+ * @private
+ */
 ExportTools.prototype.hide = function() {
 	this.helperInput.style.display = 'none';
 	this.closeButton.style.display = 'none';
 	this.saveButton.style.display = 'none';
 };
 
+/**
+ * @private
+ */
 ExportTools.prototype.exportData = function() {
 	var _self = this;
 	localforage.getItem(this.storageKey).then(function(value) {
@@ -38,6 +52,9 @@ ExportTools.prototype.exportData = function() {
 		console.error('Problem reading from storage!', err);
 	});
 };
+/**
+ * @private
+ */
 ExportTools.prototype.importData = function(onSuccess) {
 	if (!confirm('Are you sure you want to overwrite your current data?')) {
 		return;
@@ -51,6 +68,9 @@ ExportTools.prototype.importData = function(onSuccess) {
 	});
 };
 
+/**
+ * Init export tools GUI.
+ */
 ExportTools.prototype.init = function() {
 	var _self = this;
 
