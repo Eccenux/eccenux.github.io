@@ -7,6 +7,8 @@
 		whole:'★'
 	};
 	var ratingMax = 3;
+
+	var ratingsKey = 'is2016ratings';
 	
 	var ratings = {
 		ids : {}
@@ -15,9 +17,25 @@
 	function saveRating(id, rating) {
 		ratings.ids[id] = rating;
 		console.log(id, rating);
+		localforage.setItem(ratingsKey, ratings);
 	}
 	function readRating(id) {
 		return (id in ratings.ids) ? ratings.ids[id] : 0;
+	}
+
+	function initRatings(callback) {
+		localforage.getItem(ratingsKey).then(function(value) {
+			if (value === null) {
+				console.log('No ratings stored yet');
+			} else {
+				console.log('Ratings restored');
+				ratings = value;
+			}
+			callback();
+		}).catch(function(err) {
+			console.error('Problem reading ratings storage!', err);
+			callback();
+		});
 	}
 
 	function prepareRatingHtml(rating) {
@@ -63,6 +81,8 @@
 	}
 
 	// assuming content is ready
-	prepare();
+	initRatings(function() {
+		prepare();
+	});
 })();
 
