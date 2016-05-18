@@ -39,6 +39,9 @@ ExportTools.prototype.exportData = function() {
 	});
 };
 ExportTools.prototype.importData = function(onSuccess) {
+	if (!confirm('Are you sure you want to overwrite your current data?')) {
+		return;
+	}
 	var json = this.helperInput.value;
 	localforage.setItem(this.storageKey, JSON.parse(json)).then(function() {
 		console.log('Data import finished');
