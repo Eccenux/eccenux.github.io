@@ -8,6 +8,9 @@ body {
 /**
 	Main structure
 */
+.agenda-container {
+  min-width: 885px;
+}
 .agenda-container .container > h3 {
   text-align: center;
   margin: 2em 1em 1em;
