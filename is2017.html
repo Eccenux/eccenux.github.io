@@ -1719,5 +1719,32 @@ var timelines = {
 </section>
 <!-- .container --></div>
 
+
+	<!-- font-icons -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+	
+	<!-- fancybox (popup) -->
+	<script src="https://infoshare.pl/system/themes/infoshare/js/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="https://infoshare.pl/system/themes/infoshare/js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+	<script type="text/javascript">
+$(function() {
+
+$(".fancybox-ajax").fancybox({
+    type: 'iframe',
+    height: '70%',
+    widht: '70%',
+	padding: 5,
+    beforeLoad: function(){
+      var url= $(this.element).data("href");
+      this.href = url;
+      //this.width  = parseInt(this.element.data('fancybox-width'));
+      //this.height = parseInt(this.element.data('fancybox-height'));
+    },
+});
+  
+});
+	</script>
+	<link rel="stylesheet" href="https://infoshare.pl/system/themes/infoshare/js/fancybox/jquery.fancybox.css?v03" media="screen" />
+	<link rel="stylesheet" href="https://infoshare.pl/system/themes/infoshare/js/fancybox/helpers/jquery.fancybox-buttons.css?v02" />
 </body>
 </html>
