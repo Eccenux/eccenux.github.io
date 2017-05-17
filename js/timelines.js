@@ -52,6 +52,7 @@ var timelines = {
 		var lineIndex = Math.floor(deltaT / 5);
 		var nowLine = $lines[lineIndex]
 		nowLine.scrollIntoView();
+		scrollBy(0, -100); // scroll back a bit
 		window.nowLine = nowLine;
 		nowLine.classList.add('active');
 	},
