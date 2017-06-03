@@ -2,10 +2,8 @@
 // @id             opr-plugin-keyboard@winabaseta
 // @name           OPR plugin: Keyboard Action
 // @category       Usability
-// @author         WinaBaseta
-// @version        0.1.20170512.1523
-// @updateURL      https://iitc.baseciq.org/oprkeyboard.user.js?update
-// @downloadURL    https://iitc.baseciq.org/oprkeyboard.user.js?download
+// @author         WinaBaseta, Nux
+// @version        0.2.0
 // @match          https://opr.ingress.com/recon
 // @require        https://code.jquery.com/jquery-latest.js
 // @grant          none
@@ -64,6 +62,7 @@
     }
 
     function loglatlngnick() {
+		/*
         [lat, lng] = $('[ng-bind="subCtrl.pageData.streetAddress"]').parent().attr('href').replace(/.*q=@/, '').split(',');
         nickname = $('span.player_nickname').html();
 
@@ -71,8 +70,10 @@
             url: 'https://iitc.baseciq.org/oprkeyboardlog.php?lat=' + lat + '&lng=' + lng + '&nickname=' + nickname,
             method: 'GET'
         });
+		*/
     }
-
+	
+	/*
     $(document).ready(function() {
         $('[ng-bind="subCtrl.pageData.streetAddress"]').bind("DOMSubtreeModified",function(){
             loglatlngnick();
@@ -81,6 +82,7 @@
             loglatlngnick();
         }
     });
+	*/
 
     highlight();
 })();
