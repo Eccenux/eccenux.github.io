@@ -22,23 +22,31 @@
         else
             numkey = null;
         
-        if(event.keyCode == 13 && $('a.button[href="/recon"]').is(':visible')) {
-            document.location.href='/recon';
-            event.preventDefault();
-        } else if(event.keyCode == 13 && $('[ng-click="answerCtrl2.confirmLowQuality()"]').is(':visible')) {
-            $('[ng-click="answerCtrl2.confirmLowQuality()"]').click();
-            currentSelectable = 0;
-            event.preventDefault();
-        } else if(event.keyCode == 13 && currentSelectable == maxItems) {
-            $('[ng-click="answerCtrl.submitForm()"]').click();
-            event.preventDefault();
-        } else if((event.keyCode == 27 || event.keyCode == 111) && $('[ng-click="answerCtrl2.resetLowQuality()"]').is(':visible')) {
-            $('[ng-click="answerCtrl2.resetLowQuality()"]').click();
-            currentSelectable = 0;
-            event.preventDefault();
+		// enter
+        if(event.keyCode == 13) {
+			if ($('a.button[href="/recon"]').is(':visible')) {
+				document.location.href='/recon';
+				event.preventDefault();
+			// modalne
+			} else if ($('.modal-body').is(':visible') && $('.modal-body [ng-click*=confirm]').length == 1) {
+				$('.modal-body [ng-click*=confirm]').click();
+				currentSelectable = 0;
+				event.preventDefault();
+			} else if(currentSelectable == maxItems) {
+				$('[ng-click="answerCtrl.submitForm()"]').click();
+				event.preventDefault();
+			}
+		// esc
         } else if(event.keyCode == 27 || event.keyCode == 111) {
-            currentSelectable = 0;
-            $('html, body').animate({scrollTop: '0px'}, 300);
+			// modalne
+			if ($('.modal-body').is(':visible') && $('.modal-body [ng-click*=reset]').length == 1) {
+				$('.modal-body [ng-click*=reset]').click();
+				currentSelectable = 0;
+				event.preventDefault();
+			} else {
+				currentSelectable = 0;
+				$('html, body').animate({scrollTop: '0px'}, 300);
+			}
 		} else if((event.keyCode == 107 || event.keyCode == 9) && currentSelectable < maxItems) {
 			currentSelectable++;
             event.preventDefault();
