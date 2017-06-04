@@ -3,7 +3,7 @@
 // @name           OPR plugin: Keyboard Action
 // @category       Usability
 // @author         WinaBaseta, Nux
-// @version        0.2.0
+// @version        0.2.1
 // @match          https://opr.ingress.com/recon
 // @require        https://code.jquery.com/jquery-latest.js
 // @grant          none
@@ -24,6 +24,7 @@
 		
 		// enter
 		if(event.keyCode == 13) {
+			// modalne końcowe
 			if ($('a.button[href="/recon"]').is(':visible')) {
 				document.location.href='/recon';
 				event.preventDefault();
@@ -32,6 +33,12 @@
 				$('.modal-body [ng-click*=confirm]').click();
 				currentSelectable = 0;
 				event.preventDefault();
+			// podgląd duplikatu
+			} else if ($('[onclick*=markDuplicate]').length == 1) {
+				$('[onclick*=markDuplicate]').click();
+				currentSelectable = 0;
+				event.preventDefault();
+			// submit całości gdy wszystkie ocenione
 			} else if(currentSelectable == maxItems) {
 				$('[ng-click="answerCtrl.submitForm()"]').click();
 				event.preventDefault();
