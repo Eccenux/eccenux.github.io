@@ -11,7 +11,9 @@
 
 (function() {
 
+	// indeks "bieżącej" grupy gwiazdek (focus)
 	var currentSelectable = 0;
+	// liczba grup gwiazdek
 	var maxItems = 6;
 
 	$(document).keydown(function(event) {
@@ -54,6 +56,7 @@
 				currentSelectable = 0;
 				$('html, body').animate({scrollTop: '0px'}, 300);
 			}
+		//
 		} else if((event.keyCode == 107 || event.keyCode == 9) && currentSelectable < maxItems) {
 			currentSelectable++;
 			event.preventDefault();
@@ -69,35 +72,14 @@
 		highlight();
 	});
 
+	/**
+		Zaznaczenie "bieżącej" grupy gwiazdek.
+	*/
 	function highlight() {
 		$('.btn-group').css('border', 'none');
 		if(currentSelectable < maxItems) {
 			$($('.btn-group')[currentSelectable]).css('border', '1px solid #f00');
 		}
 	}
-
-	function loglatlngnick() {
-		/*
-		[lat, lng] = $('[ng-bind="subCtrl.pageData.streetAddress"]').parent().attr('href').replace(/.*q=@/, '').split(',');
-		nickname = $('span.player_nickname').html();
-
-		$.ajax({
-			url: 'https://iitc.baseciq.org/oprkeyboardlog.php?lat=' + lat + '&lng=' + lng + '&nickname=' + nickname,
-			method: 'GET'
-		});
-		*/
-	}
-	
-	/*
-	$(document).ready(function() {
-		$('[ng-bind="subCtrl.pageData.streetAddress"]').bind("DOMSubtreeModified",function(){
-			loglatlngnick();
-		});
-		if($('[ng-bind="subCtrl.pageData.streetAddress"]').html() != '{{subCtrl.pageData.streetAddress}}') {
-			loglatlngnick();
-		}
-	});
-	*/
-
 	highlight();
 })();
